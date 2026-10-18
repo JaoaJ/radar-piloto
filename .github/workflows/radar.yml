@@ -1,0 +1,47 @@
+name: Atualizar Radar de Licitacoes
+
+on:
+  schedule:
+    - cron: "15 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pncp-collection
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar oportunidades e gerar site
+        env:
+          RADAR_UF: ${{ vars.RADAR_UF || 'SC' }}
+          RADAR_KEYWORD: ${{ vars.RADAR_KEYWORD || 'tecnologia' }}
+          RADAR_DAYS_AHEAD: ${{ vars.RADAR_DAYS_AHEAD || '30' }}
+          RADAR_MAX_PAGES: ${{ vars.RADAR_MAX_PAGES || '100' }}
+          RADAR_MAX_DATA_AGE_HOURS: ${{ vars.RADAR_MAX_DATA_AGE_HOURS || '36' }}
+          RADAR_MAX_ALERTS: ${{ vars.RADAR_MAX_ALERTS || '10' }}
+          RADAR_MIN_VALUE: ${{ vars.RADAR_MIN_VALUE }}
+          RADAR_MAX_VALUE: ${{ vars.RADAR_MAX_VALUE }}
+          RADAR_SEND_EMPTY: ${{ vars.RADAR_SEND_EMPTY || 'false' }}
+          RADAR_SITE_URL: ${{ vars.RADAR_SITE_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python -m unittest discover -s tests
+          python main.py
+          python generate_pages.py
+      - name: Persistir estado publico para deduplicacao
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/radar_data.json
+          git diff --cached --quiet || git commit -m "Atualiza dados publicos do radar"
+          git push

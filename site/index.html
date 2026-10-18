@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encontre oportunidades de compras públicas abertas no PNCP e receba alertas alinhados ao seu negócio.">
+  <meta name="theme-color" content="#12352f">
+  <title>Radar de Licitações | Oportunidades públicas para fornecedores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#inicio" aria-label="Radar de Licitações, início"><span class="wordmark-mark">R</span><span>RADAR<span class="wordmark-light">/LICITAÇÕES</span></span></a>
+    <nav aria-label="Navegacao principal">
+      <a href="#explorar">Oportunidades</a><a href="#alertas">Alertas</a><a href="#planos">Planos</a><a href="#dados">Dados</a>
+    </nav>
+    <a class="header-cta" href="#interesse">Testar gratuitamente <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> OPORTUNIDADES PÚBLICAS · PNCP</p>
+        <h1>Seu próximo contrato público <em>começa aqui.</em></h1>
+        <p class="hero-lede">Encontre editais que combinam com o que sua empresa fornece. Sem varrer portais todos os dias.</p>
+        <div class="hero-actions"><a class="button button-acid" href="#explorar">Ver oportunidades <span aria-hidden="true">↓</span></a><a class="text-link" href="#alertas">Conhecer os alertas</a></div>
+      </div>
+      <aside class="hero-signal" aria-label="Resumo dos dados atuais">
+        <div class="signal-top"><span>BASE PÚBLICA</span><span class="signal-dot"></span></div>
+        <div class="signal-number" id="hero-count">—</div><p>oportunidades abertas<br>na base carregada</p>
+        <div class="signal-rule"></div><span class="signal-caption">ÚLTIMA COLETA</span><time id="last-update">Consultando fonte...</time>
+      </aside>
+      <div class="hero-index" aria-hidden="true">01 <span>02</span> 03</div>
+    </section>
+
+    <section class="explore section-wrap" id="explorar">
+      <div class="section-heading"><div><p class="eyebrow">01 / BUSCA PÚBLICA</p><h2>O que está aberto</h2></div><p id="result-count" class="result-count">Carregando dados do PNCP...</p></div>
+      <p id="freshness-warning" class="freshness-warning" hidden></p>
+      <form class="filters" id="filters">
+        <label class="filter-search"><span>SEGMENTO OU TERMO</span><input id="keyword" type="search" placeholder="Ex.: material hospitalar" autocomplete="off"></label>
+        <label><span>ESTADO</span><select id="uf"><option value="">Todos os estados</option></select></label>
+        <label><span>VALOR MÍNIMO</span><input id="min-value" type="number" min="0" placeholder="R$ 0"></label>
+        <label><span>VALOR MÁXIMO</span><input id="max-value" type="number" min="0" placeholder="Sem limite"></label>
+        <label><span>SITUAÇÃO</span><select id="situation"><option value="">Todas</option></select></label>
+        <label><span>PRAZO ATÉ</span><input id="deadline-before" type="date"></label>
+        <button class="filter-reset" type="reset" aria-label="Limpar filtros" title="Limpar filtros">↺</button>
+      </form>
+      <div class="opportunity-table-wrap"><table class="opportunity-table"><thead><tr><th>OBJETO / ORGAO</th><th>LOCAL</th><th>VALOR ESTIMADO</th><th>ENCERRAMENTO</th><th></th></tr></thead><tbody id="opportunity-list"><tr><td colspan="5" class="empty-state">Carregando oportunidades reais...</td></tr></tbody></table></div>
+      <p class="table-footnote">Prazos mostrados conforme publicação do órgão no PNCP. Confirme as condições no edital oficial.</p>
+    </section>
+
+    <section class="alert-band" id="alertas"><div class="section-wrap alert-layout">
+      <div><p class="eyebrow">02 / NO SEU TELEGRAM</p><h2>Oportunidade certa.<br><em>Na hora de agir.</em></h2><p>Um resumo diário ordenado pelo prazo, com valor estimado, órgão e link direto para a fonte oficial.</p><a class="button button-acid" href="#interesse">Quero testar os alertas <span aria-hidden="true">↗</span></a></div>
+      <div class="telegram-preview"><div class="telegram-top"><span class="telegram-avatar">R</span><span><strong>Radar de Licitações</strong><small>prévia de alerta</small></span><span class="telegram-mark">TELEGRAM</span></div><div id="digest-preview" class="telegram-message"><p>Carregando uma oportunidade real...</p></div><p class="preview-note">Exemplo gerado com dados da coleta atual. Nenhuma mensagem foi enviada sem configurar o bot.</p></div>
+    </div></section>
+
+    <section class="plans section-wrap" id="planos">
+      <div class="section-heading"><div><p class="eyebrow">03 / PLANOS</p><h2>Comece sem compromisso</h2></div><p class="plans-note">Sem cobrança ativa nesta versão.</p></div>
+      <div class="plan-grid">
+        <article class="plan"><p class="plan-label">PÚBLICO</p><h3>Gratuito</h3><p class="plan-price">R$ 0 <span>/ sempre</span></p><ul><li>Consulta pública às oportunidades</li><li>Exploração sem cadastro</li><li>Dados da coleta atual, sujeitos a atualização diária</li></ul><a class="text-link" href="#explorar">Explorar agora <span aria-hidden="true">↗</span></a></article>
+        <article class="plan plan-founder"><p class="plan-label">ACESSO FUNDADOR</p><h3>Fundador</h3><p class="plan-price">R$ 49 <span>/ mês · proposta</span></p><ul><li>Alertas personalizados por segmento e UF</li><li>Faixa de valor e notificações prioritárias</li><li>Funcionalidades básicas do painel</li></ul><a class="button button-dark" href="#interesse">Registrar interesse <span aria-hidden="true">↗</span></a></article>
+      </div>
+      <p class="pricing-disclaimer">Preço em validação. Pagamentos e assinaturas ainda não estão disponíveis.</p>
+    </section>
+
+    <section class="interest-band" id="interesse"><div class="section-wrap interest-layout">
+      <div><p class="eyebrow">04 / CONVITE PARA TESTE</p><h2>Qual oportunidade<br>você quer encontrar?</h2><p>Conte seu segmento e região para demonstrarmos o radar com dados públicos.</p></div>
+      <form class="lead-form" name="interesse" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="obrigado.html">
+        <input type="hidden" name="form-name" value="interesse"><p class="hidden"><label>Não preencher <input name="bot-field"></label></p>
+        <label>Segmento comercial<input name="segmento" required maxlength="100" placeholder="Ex.: equipamentos de rede"></label>
+        <div class="form-row"><label>UF<select name="uf" required><option value="">Selecione</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></label><label>Contato (e-mail ou Telegram)<input name="contato" required maxlength="120" placeholder="voce@empresa.com"></label></div>
+        <label class="consent"><input type="checkbox" name="consentimento" value="sim" required><span>Autorizo contato sobre o teste e o plano fundador. Não envie CPF ou dados sensíveis.</span></label>
+        <button class="button button-acid" type="submit">Registrar interesse <span aria-hidden="true">↗</span></button><p class="form-note">O formulário registra envios quando hospedado em Netlify. Consulte o painel do provedor para acessar os contatos.</p>
+      </form>
+    </div></section>
+
+    <section class="data-section section-wrap" id="dados">
+      <div class="section-heading"><div><p class="eyebrow">05 / TRANSPARÊNCIA</p><h2>Dados, sem mistério</h2></div><p class="data-updated">Atualização da coleta: <strong id="data-updated">—</strong></p></div>
+      <div class="data-grid"><div><h3>Fonte</h3><p>API de consulta e páginas oficiais do Portal Nacional de Contratações Públicas (PNCP).</p></div><div><h3>Como filtramos</h3><p>Busca textual local no objeto, UF, valor e prazo. O resultado da API é verificado de novo para remover prazos vencidos.</p></div><div><h3>O que pode faltar</h3><p>Descrição, valor, local e atualização dependem do órgão publicador. Busca textual não substitui leitura do edital.</p></div></div>
+      <div class="metrics-row" aria-label="Métricas disponíveis"><div><span>OPORTUNIDADES ABERTAS</span><strong id="metric-open">—</strong></div><div><span>MENSAGENS TELEGRAM ENVIADAS</span><strong id="metric-sent">—</strong></div><div><span>VISITANTES / ATIVOS</span><strong>Sem medição</strong></div><div><span>CADASTROS</span><strong id="metric-leads">Consulte o Netlify</strong></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="wordmark" href="#inicio"><span class="wordmark-mark">R</span><span>RADAR<span class="wordmark-light">/LICITAÇÕES</span></span></a><p>Dados públicos. Oportunidades oficiais. Decisão sua.</p><div class="footer-links"><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos</a><a href="https://pncp.gov.br/app/editais?q=&status=recebendo_proposta&pagina=1" target="_blank" rel="noopener">Consultar no PNCP ↗</a></div></footer>
+</body>
+</html>

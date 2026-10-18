@@ -1,0 +1,6 @@
+[build]
+  command = "python generate_pages.py"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
