@@ -1,10 +1,13 @@
 const list = document.querySelector("#opportunity-list");
 const keywordInput = document.querySelector("#keyword");
 const ufSelect = document.querySelector("#uf");
+const modalitySelect = document.querySelector("#modality");
 const minValueInput = document.querySelector("#min-value");
 const maxValueInput = document.querySelector("#max-value");
 const situationSelect = document.querySelector("#situation");
 const deadlineBeforeInput = document.querySelector("#deadline-before");
+const onlyDispensaCheckbox = document.querySelector("#only-dispensa");
+const onlyMeEppCheckbox = document.querySelector("#only-meepp");
 let opportunities = [];
 let collectionAvailable = false;
 let collectionStale = false;
@@ -29,14 +32,21 @@ const formatCurrency = (value) => typeof value === "number" && Number.isFinite(v
 function filteredItems() {
   const keyword = normalizeText(keywordInput.value.trim());
   const uf = ufSelect.value;
+  const modality = modalitySelect ? modalitySelect.value : "";
   const minimum = minValueInput.value === "" ? null : Number(minValueInput.value);
   const maximum = maxValueInput.value === "" ? null : Number(maxValueInput.value);
   const situation = situationSelect.value;
   const deadlineBefore = deadlineBeforeInput.value;
+  const onlyDispensa = onlyDispensaCheckbox ? onlyDispensaCheckbox.checked : false;
+  const onlyMeEpp = onlyMeEppCheckbox ? onlyMeEppCheckbox.checked : false;
+
   return opportunities.filter((item) => {
     const haystack = normalizeText([item.objeto, item.orgao, item.modalidade].join(" "));
     if (keyword && !haystack.includes(keyword)) return false;
     if (uf && item.uf !== uf) return false;
+    if (modality && item.modalidade !== modality) return false;
+    if (onlyDispensa && !normalizeText(item.modalidade ?? "").includes("dispensa")) return false;
+    if (onlyMeEpp && (typeof item.valor_estimado !== "number" || item.valor_estimado > 80000 || item.valor_estimado <= 0)) return false;
     if (minimum !== null && (typeof item.valor_estimado !== "number" || item.valor_estimado < minimum)) return false;
     if (maximum !== null && (typeof item.valor_estimado !== "number" || item.valor_estimado > maximum)) return false;
     if (situation && item.situacao !== situation) return false;
@@ -88,7 +98,12 @@ function render() {
       ? `<a class="official-link" href="${escapeHTML(item.link)}" target="_blank" rel="noopener">PNCP ↗</a>`
       : "<span class=\"opp-meta\">Link indisponivel</span>";
     const location = [item.municipio, item.uf].filter(Boolean).map(escapeHTML).join(" / ") || "Nao informado";
-    return `<tr><td><a class="opp-title" href="${detail}">${escapeHTML(displayOr(item.objeto))}</a><span class="opp-org">${escapeHTML(displayOr(item.orgao))}</span><span class="opp-meta">${escapeHTML(displayOr(item.modalidade))} · ${escapeHTML(displayOr(item.numero))}</span></td><td class="opp-location">${location}</td><td>${escapeHTML(formatCurrency(item.valor_estimado))}</td><td class="deadline">${escapeHTML(formatDate(item.encerramento))}</td><td>${link}</td></tr>`;
+    const isDispensa = normalizeText(item.modalidade ?? "").includes("dispensa");
+    const isMeEpp = typeof item.valor_estimado === "number" && item.valor_estimado > 0 && item.valor_estimado <= 80000;
+    const dispensaBadge = isDispensa ? '<span class="badge-pill badge-dispensa">⚡ Dispensa</span>' : '';
+    const meeppBadge = isMeEpp ? '<span class="badge-pill badge-meepp">🛡️ Até 80k (ME/EPP)</span>' : '';
+    const badges = (dispensaBadge || meeppBadge) ? `<div style="margin-bottom: 5px;">${dispensaBadge}${meeppBadge}</div>` : '';
+    return `<tr><td>${badges}<a class="opp-title" href="${detail}">${escapeHTML(displayOr(item.objeto))}</a><span class="opp-org">${escapeHTML(displayOr(item.orgao))}</span><span class="opp-meta">${escapeHTML(displayOr(item.modalidade))} · ${escapeHTML(displayOr(item.numero))}</span></td><td class="opp-location">${location}</td><td>${escapeHTML(formatCurrency(item.valor_estimado))}</td><td class="deadline">${escapeHTML(formatDate(item.encerramento))}</td><td>${link}</td></tr>`;
   }).join("");
 
   if (paginationWrap) {
@@ -143,6 +158,13 @@ async function loadData() {
       option.value = uf;
       option.textContent = uf;
       ufSelect.append(option);
+    }
+    const modalities = [...new Set(opportunities.map((item) => item.modalidade).filter(Boolean))].sort();
+    for (const mod of modalities) {
+      const option = document.createElement("option");
+      option.value = mod;
+      option.textContent = mod;
+      modalitySelect?.append(option);
     }
     const situations = [...new Set(opportunities.map((item) => item.situacao).filter(Boolean))].sort();
     for (const situation of situations) {

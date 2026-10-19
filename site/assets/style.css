@@ -59,10 +59,16 @@ h1, h2, h3, p { margin-top: 0; }
 .section-heading h2, .interest-band h2 { margin: 0; font-size: clamp(30px, 4vw, 43px); line-height: 1.08; font-weight: 500; }
 .result-count, .plans-note, .data-updated { margin: 0 0 5px; color: var(--muted); font-size: 12px; }
 .freshness-warning { margin: -12px 0 16px; padding: 10px 12px; border-left: 3px solid var(--coral); color: #704234; background: #f8e9e3; font-size: 12px; }
-.filters { margin-bottom: 17px; padding: 13px; display: grid; grid-template-columns: minmax(220px, 1.7fr) repeat(5, minmax(105px, .7fr)) 42px; align-items: end; gap: 10px; border: 1px solid var(--line); background: #fff; }
+.filters { margin-bottom: 17px; padding: 13px; display: grid; grid-template-columns: minmax(190px, 1.6fr) repeat(6, minmax(95px, .8fr)) 42px; align-items: end; gap: 10px; border: 1px solid var(--line); background: #fff; }
 .filters label, .lead-form label { min-width: 0; display: grid; gap: 6px; color: var(--muted); font: 10px var(--mono); }
 .filters input, .filters select, .lead-form input:not([type=checkbox]), .lead-form select { width: 100%; min-height: 40px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 0; outline-color: #508575; color: var(--ink); background: #fff; font: 13px var(--sans); }
 .filter-reset { width: 40px; height: 40px; border: 1px solid var(--line); color: var(--forest); background: var(--paper); font-size: 20px; cursor: pointer; }
+.quick-filters { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; margin-top: 4px; padding-top: 10px; border-top: 1px dashed var(--line); flex-wrap: wrap; }
+.quick-toggle { display: inline-flex !important; flex-direction: row !important; align-items: center !important; gap: 7px !important; cursor: pointer; color: var(--forest) !important; font: 500 12px var(--sans) !important; user-select: none; }
+.quick-toggle input { width: 16px !important; height: 16px !important; min-height: 0 !important; margin: 0 !important; accent-color: var(--forest); cursor: pointer; }
+.badge-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font: 600 10px var(--mono); text-transform: uppercase; margin-right: 6px; letter-spacing: 0.3px; }
+.badge-dispensa { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.badge-meepp { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
 .opportunity-table-wrap { overflow-x: auto; border-top: 2px solid var(--forest); }
 .opportunity-table { width: 100%; min-width: 750px; border-collapse: collapse; text-align: left; }
 .opportunity-table th { padding: 12px 10px; color: var(--muted); background: #edeee8; font: 10px var(--mono); }

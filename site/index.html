@@ -41,13 +41,18 @@
       <div class="section-heading"><div><p class="eyebrow">01 / BUSCA PÚBLICA</p><h2>O que está aberto</h2></div><p id="result-count" class="result-count">Carregando dados do PNCP...</p></div>
       <p id="freshness-warning" class="freshness-warning" hidden></p>
       <form class="filters" id="filters">
-        <label class="filter-search"><span>SEGMENTO OU TERMO</span><input id="keyword" type="search" placeholder="Ex.: material hospitalar" autocomplete="off"></label>
+        <label class="filter-search"><span>SEGMENTO OU TERMO</span><input id="keyword" type="search" placeholder="Ex.: computadores, rede, software" autocomplete="off"></label>
         <label><span>ESTADO</span><select id="uf"><option value="">Todos os estados</option></select></label>
+        <label><span>MODALIDADE</span><select id="modality"><option value="">Todas</option></select></label>
         <label><span>VALOR MÍNIMO</span><input id="min-value" type="number" min="0" placeholder="R$ 0"></label>
         <label><span>VALOR MÁXIMO</span><input id="max-value" type="number" min="0" placeholder="Sem limite"></label>
         <label><span>SITUAÇÃO</span><select id="situation"><option value="">Todas</option></select></label>
         <label><span>PRAZO ATÉ</span><input id="deadline-before" type="date"></label>
         <button class="filter-reset" type="reset" aria-label="Limpar filtros" title="Limpar filtros">↺</button>
+        <div class="quick-filters">
+          <label class="quick-toggle"><input type="checkbox" id="only-dispensa"><span>⚡ Só Dispensas de Licitação</span></label>
+          <label class="quick-toggle"><input type="checkbox" id="only-meepp"><span>🛡️ Até R$ 80.000 (Porte ME/EPP)</span></label>
+        </div>
       </form>
       <div class="opportunity-table-wrap"><table class="opportunity-table"><thead><tr><th>OBJETO / ORGAO</th><th>LOCAL</th><th>VALOR ESTIMADO</th><th>ENCERRAMENTO</th><th></th></tr></thead><tbody id="opportunity-list"><tr><td colspan="5" class="empty-state">Carregando oportunidades reais...</td></tr></tbody></table></div>
       <div class="pagination-wrap" id="pagination" hidden>
