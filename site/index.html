@@ -50,6 +50,14 @@
         <button class="filter-reset" type="reset" aria-label="Limpar filtros" title="Limpar filtros">↺</button>
       </form>
       <div class="opportunity-table-wrap"><table class="opportunity-table"><thead><tr><th>OBJETO / ORGAO</th><th>LOCAL</th><th>VALOR ESTIMADO</th><th>ENCERRAMENTO</th><th></th></tr></thead><tbody id="opportunity-list"><tr><td colspan="5" class="empty-state">Carregando oportunidades reais...</td></tr></tbody></table></div>
+      <div class="pagination-wrap" id="pagination" hidden>
+        <span class="pagination-info" id="pagination-info">Mostrando 1–10</span>
+        <div class="pagination-controls">
+          <button type="button" class="pagination-btn" id="prev-page" disabled>← Anterior</button>
+          <span class="pagination-current" id="current-page">1 / 1</span>
+          <button type="button" class="pagination-btn" id="next-page">Próxima →</button>
+        </div>
+      </div>
       <p class="table-footnote">Prazos mostrados conforme publicação do órgão no PNCP. Confirme as condições no edital oficial.</p>
     </section>
 

@@ -76,6 +76,12 @@ h1, h2, h3, p { margin-top: 0; }
 .official-link { color: #356659; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .empty-state { padding: 40px !important; color: var(--muted); text-align: center; }
 .table-footnote, .source-note { margin: 13px 0 0; color: var(--muted); font-size: 11px; }
+.pagination-wrap { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding: 11px 16px; background: #fff; border: 1px solid var(--line); font: 11px var(--mono); color: var(--muted); flex-wrap: wrap; gap: 10px; }
+.pagination-controls { display: flex; align-items: center; gap: 12px; }
+.pagination-btn { padding: 6px 14px; background: var(--paper); border: 1px solid var(--line); color: var(--forest); font: 500 11px var(--mono); cursor: pointer; transition: all .15s ease; }
+.pagination-btn:hover:not(:disabled) { background: var(--forest); color: white; border-color: var(--forest); }
+.pagination-btn:disabled { opacity: .35; cursor: not-allowed; }
+.pagination-current { font-weight: 500; color: var(--ink); }
 .alert-band { padding: 74px 0; color: white; background: var(--forest-deep); }
 .alert-layout { display: grid; grid-template-columns: 1fr minmax(360px, 480px); gap: 9%; align-items: center; }
 .alert-band h2 { margin: 0 0 18px; font-size: clamp(35px, 4.2vw, 48px); line-height: 1.05; font-weight: 500; }

@@ -8,6 +8,8 @@ const deadlineBeforeInput = document.querySelector("#deadline-before");
 let opportunities = [];
 let collectionAvailable = false;
 let collectionStale = false;
+let currentPage = 1;
+const PAGE_SIZE = 10;
 
 const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -47,21 +49,39 @@ function render() {
   const items = filteredItems();
   const summary = `${items.length} oportunidade${items.length === 1 ? "" : "s"} encontrada${items.length === 1 ? "" : "s"}`;
   document.querySelector("#result-count").textContent = collectionStale ? `BASE DESATUALIZADA · ${summary}` : summary;
+  const paginationWrap = document.querySelector("#pagination");
+  const paginationInfo = document.querySelector("#pagination-info");
+  const currentPageEl = document.querySelector("#current-page");
+  const prevBtn = document.querySelector("#prev-page");
+  const nextBtn = document.querySelector("#next-page");
+
   if (!collectionAvailable) {
     document.querySelector("#result-count").textContent = "Aguardando a primeira coleta bem-sucedida";
     list.innerHTML = '<tr><td colspan="5" class="empty-state">Ainda não há uma coleta concluída. Isso não significa que não existam oportunidades no PNCP.</td></tr>';
+    if (paginationWrap) paginationWrap.hidden = true;
     return;
   }
   if (collectionStale) {
     document.querySelector("#result-count").textContent = "Snapshot desatualizado · oportunidades ocultas";
     list.innerHTML = '<tr><td colspan="5" class="empty-state">A coleta ultrapassou a validade configurada. Consulte as oportunidades diretamente no PNCP até uma nova atualização.</td></tr>';
+    if (paginationWrap) paginationWrap.hidden = true;
     return;
   }
   if (!items.length) {
     list.innerHTML = '<tr><td colspan="5" class="empty-state">Nenhuma oportunidade corresponde aos filtros. Amplie a busca ou consulte o PNCP.</td></tr>';
+    if (paginationWrap) paginationWrap.hidden = true;
     return;
   }
-  list.innerHTML = items.map((item) => {
+
+  const totalPages = Math.ceil(items.length / PAGE_SIZE) || 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = Math.min(startIndex + PAGE_SIZE, items.length);
+  const pageItems = items.slice(startIndex, endIndex);
+
+  list.innerHTML = pageItems.map((item) => {
     const slug = String(item.id ?? item.numero ?? "oportunidade").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     const detail = item.id ? `editais/${slug}.html` : "#";
     const link = typeof item.link === "string" && item.link.startsWith("https://pncp.gov.br/")
@@ -70,6 +90,14 @@ function render() {
     const location = [item.municipio, item.uf].filter(Boolean).map(escapeHTML).join(" / ") || "Nao informado";
     return `<tr><td><a class="opp-title" href="${detail}">${escapeHTML(displayOr(item.objeto))}</a><span class="opp-org">${escapeHTML(displayOr(item.orgao))}</span><span class="opp-meta">${escapeHTML(displayOr(item.modalidade))} · ${escapeHTML(displayOr(item.numero))}</span></td><td class="opp-location">${location}</td><td>${escapeHTML(formatCurrency(item.valor_estimado))}</td><td class="deadline">${escapeHTML(formatDate(item.encerramento))}</td><td>${link}</td></tr>`;
   }).join("");
+
+  if (paginationWrap) {
+    paginationWrap.hidden = items.length <= PAGE_SIZE;
+    paginationInfo.textContent = `Mostrando ${startIndex + 1}–${endIndex} de ${items.length} oportunidades`;
+    currentPageEl.textContent = `Página ${currentPage} de ${totalPages}`;
+    prevBtn.disabled = currentPage <= 1;
+    nextBtn.disabled = currentPage >= totalPages;
+  }
 }
 
 function renderDigest() {
@@ -139,9 +167,32 @@ async function loadData() {
   }
 }
 
-document.querySelector("#filters").addEventListener("input", render);
-document.querySelector("#filters").addEventListener("change", render);
-document.querySelector("#filters").addEventListener("reset", () => requestAnimationFrame(render));
+function onFilterChange() {
+  currentPage = 1;
+  render();
+}
+
+document.querySelector("#filters").addEventListener("input", onFilterChange);
+document.querySelector("#filters").addEventListener("change", onFilterChange);
+document.querySelector("#filters").addEventListener("reset", () => requestAnimationFrame(onFilterChange));
+
+document.querySelector("#prev-page")?.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    render();
+    document.querySelector("#explorar")?.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+document.querySelector("#next-page")?.addEventListener("click", () => {
+  const totalPages = Math.ceil(filteredItems().length / PAGE_SIZE) || 1;
+  if (currentPage < totalPages) {
+    currentPage++;
+    render();
+    document.querySelector("#explorar")?.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
 loadData();
 
 fetch("data/metrics.json", { cache: "no-store" }).then((response) => response.ok ? response.json() : null).then((metrics) => {
