@@ -46,10 +46,10 @@ class PNCPClient:
         *,
         timeout: float = 20,
         retries: int = 4,
-        backoff_seconds: float = 1,
+        backoff_seconds: float = 3.0,
         max_backoff_seconds: float = 30,
         max_retry_after_seconds: float = 600,
-        min_request_interval: float = 0.35,
+        min_request_interval: float = 2.5,
         opener: Callable[..., Any] = urlopen,
         sleeper: Callable[[float], None] = time.sleep,
         clock: Callable[[], float] = time.monotonic,
@@ -80,7 +80,7 @@ class PNCPClient:
                 url,
                 headers={
                     "Accept": "application/json",
-                    "User-Agent": "RadarDeLicitacoes/0.1 (consulta de dados publicos)",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 (compatible; RadarDeLicitacoes/0.1)",
                 },
             )
             try:
