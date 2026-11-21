@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_successful_collection": "2026-11-20T15:36:34.578093-03:00",
+  "last_successful_collection": "2026-11-21T14:27:38.176837-03:00",
   "opportunities": [
     {
       "id": "80622319000198-1-000084/2026",
@@ -915,7 +915,7 @@
       "modalidade": "Concorrência - Eletrônica",
       "situacao": "Suspensa",
       "situacao_id": "4",
-      "atualizacao": "2026-11-20T12:00:08-03:00",
+      "atualizacao": "2026-11-21T12:00:06-03:00",
       "link": "https://pncp.gov.br/app/editais/83102764000115/2026/421",
       "ano": 2026,
       "sequencial": 421
@@ -2175,7 +2175,7 @@
       "modalidade": "Pregão - Eletrônico",
       "situacao": "Suspensa",
       "situacao_id": "4",
-      "atualizacao": "2026-11-20T12:00:09-03:00",
+      "atualizacao": "2026-11-21T12:00:18-03:00",
       "link": "https://pncp.gov.br/app/editais/83102335000148/2026/235",
       "ano": 2026,
       "sequencial": 235
@@ -6081,7 +6081,7 @@
       "modalidade": "Dispensa",
       "situacao": "Divulgada no PNCP",
       "situacao_id": "1",
-      "atualizacao": "2026-11-20T12:00:04-03:00",
+      "atualizacao": "2026-11-21T12:00:04-03:00",
       "link": "https://pncp.gov.br/app/editais/82928698000174/2026/169",
       "ano": 2026,
       "sequencial": 169
@@ -9883,6 +9883,24 @@
       "link": "https://pncp.gov.br/app/editais/10588040000150/2026/22",
       "ano": 2026,
       "sequencial": 22
+    },
+    {
+      "id": "83102533000101-1-000205/2026",
+      "numero_controle": "83102533000101-1-000205/2026",
+      "numero": "PDE 122",
+      "objeto": "Contratação de agência de viagens para intermediar, organizar e coordenar três viagens de ida e volta entre Papanduva/SC e Pomerode/SC, destinadas aos participantes do Serviço de Convivência e Fortalecimento de Vínculos (SCFV). A intermediação abrange transporte rodoviário de passageiros, ingressos para o Zoo Pomerode e o Museu do Automóvel, almoço e lanche da tarde com bebidas, seguro viagem/passageiro, reservas e agendamentos.",
+      "orgao": "MUNICIPIO DE PAPANDUVA",
+      "uf": "SC",
+      "municipio": "Papanduva",
+      "valor_estimado": 26964.0,
+      "encerramento": "2026-11-26T08:00:00-03:00",
+      "modalidade": "Dispensa",
+      "situacao": "Divulgada no PNCP",
+      "situacao_id": "1",
+      "atualizacao": "2026-11-20T16:05:01-03:00",
+      "link": "https://pncp.gov.br/app/editais/83102533000101/2026/205",
+      "ano": 2026,
+      "sequencial": 205
     },
     {
       "id": "95990107000130-1-000224/2026",
@@ -16971,7 +16989,7 @@
       "modalidade": "Dispensa",
       "situacao": "Divulgada no PNCP",
       "situacao_id": "1",
-      "atualizacao": "2026-11-20T12:00:08-03:00",
+      "atualizacao": "2026-11-21T12:00:10-03:00",
       "link": "https://pncp.gov.br/app/editais/80622319000198/2026/85",
       "ano": 2026,
       "sequencial": 85
@@ -28347,7 +28365,7 @@
       "modalidade": "Pregão - Eletrônico",
       "situacao": "Divulgada no PNCP",
       "situacao_id": "1",
-      "atualizacao": "2026-11-20T12:00:26-03:00",
+      "atualizacao": "2026-11-21T12:00:26-03:00",
       "link": "https://pncp.gov.br/app/editais/83102517000119/2026/107",
       "ano": 2026,
       "sequencial": 107
@@ -28977,7 +28995,7 @@
       "modalidade": "Pregão - Eletrônico",
       "situacao": "Divulgada no PNCP",
       "situacao_id": "1",
-      "atualizacao": "2026-11-20T12:00:52-03:00",
+      "atualizacao": "2026-11-21T12:00:54-03:00",
       "link": "https://pncp.gov.br/app/editais/30753994000188/2026/87",
       "ano": 2026,
       "sequencial": 87
@@ -29755,6 +29773,42 @@
       "link": "https://pncp.gov.br/app/editais/10606509000136/2026/35",
       "ano": 2026,
       "sequencial": 35
+    },
+    {
+      "id": "11173405000148-1-000012/2026",
+      "numero_controle": "11173405000148-1-000012/2026",
+      "numero": "01",
+      "objeto": "Credenciamento de pessoas jurídicas da área de medicina veterinária, para a prestação de serviços, compreendidos: procedimentos cirúrgicos de esterilização animal com aplicação de microchip para identificação animal, diárias para o pós-operatório e preenchimento do Registro Geral Animal - RGA para cães e gatos dos Municípios consorciados.",
+      "orgao": "CONSORCIO INTERMUNICIPAL SERRA CATARINENSE",
+      "uf": "SC",
+      "municipio": "Lages",
+      "valor_estimado": 454.0,
+      "encerramento": "2026-12-21T10:31:00-03:00",
+      "modalidade": "Credenciamento",
+      "situacao": "Divulgada no PNCP",
+      "situacao_id": "1",
+      "atualizacao": "2026-03-02T10:57:10-03:00",
+      "link": "https://pncp.gov.br/app/editais/11173405000148/2026/12",
+      "ano": 2026,
+      "sequencial": 12
+    },
+    {
+      "id": "09362501000192-1-000014/2026",
+      "numero_controle": "09362501000192-1-000014/2026",
+      "numero": "PRI 14",
+      "objeto": "EDITAL DE CREDENCIAMENTO ELETRÔNICO DE PESSOAS JURÍDICAS PARA A PRESTAÇÃO DE SERVIÇOS DE CAPTAÇÃO DE RECURSOS ATRAVÉS DE INCENTIVOS FISCAIS  VIA LEI Nº 8.313/91 - LEI DE INCENTIVO À CULTURA FEDERAL (LEI ROUANET), PARA A REALIZAÇÃO DE PROJETOS CULTURAIS APROVADOS NA REFERIDA LEI, EM CARÁTER PERMANENTE CONFORME PREVISTO NO ART. 79 ",
+      "orgao": "FUNDACAO MUNICIPAL DE CULTURA DE BOMBINHAS",
+      "uf": "SC",
+      "municipio": "Bombinhas",
+      "valor_estimado": 1.0,
+      "encerramento": "2026-12-21T18:00:00-03:00",
+      "modalidade": "Credenciamento",
+      "situacao": "Divulgada no PNCP",
+      "situacao_id": "1",
+      "atualizacao": "2026-05-14T17:42:07-03:00",
+      "link": "https://pncp.gov.br/app/editais/09362501000192/2026/14",
+      "ano": 2026,
+      "sequencial": 14
     }
   ],
   "seen_ids": [
@@ -29936,8 +29990,8 @@
   "collection": {
     "pages_fetched": 34,
     "total_pages": 34,
-    "raw_records": 1654,
-    "open_records": 1653,
+    "raw_records": 1657,
+    "open_records": 1656,
     "matching_alert_records": 26,
     "keyword": "tecnologia",
     "uf": "SC"
